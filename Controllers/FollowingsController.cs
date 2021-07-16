@@ -1,25 +1,23 @@
-﻿using Google.Rpc;
-using Lab04.DTOs;
+﻿using Lab04.DTOs;
 using Lab04.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace Lab04.Controllers
 {
     public class FollowingsController : ApiController
     {
-        // GET: Followings
         private readonly ApplicationDbContext _dbContext;
         public FollowingsController()
         {
             _dbContext = new ApplicationDbContext();
         }
-        [System.Web.Mvc.HttpPost]
+        [HttpPost]
         public IHttpActionResult Follow(FollowingDto followingDto)
         {
             var userId = User.Identity.GetUserId();
