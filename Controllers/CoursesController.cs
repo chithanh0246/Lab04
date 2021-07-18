@@ -25,7 +25,7 @@ namespace Lab04.Controllers
                 Categories = _dbContext.Categories.ToList(),
                 Heading="Add Course"
             };
-            return View("CourseForm",viewModel);
+            return View("Create", viewModel);
         }
         [Authorize]
         [HttpPost]
@@ -35,7 +35,7 @@ namespace Lab04.Controllers
             if(!ModelState.IsValid)
             {
                 viewModel.Categories = _dbContext.Categories.ToList();
-                return View("CoureForm", viewModel);
+                return View("Create", viewModel);
             }
             var course = new Course
             {
@@ -91,7 +91,7 @@ namespace Lab04.Controllers
                 Heading = "Edit Course",
                 Id=course.Id
             };
-            return View("CoureForm", viewModel);
+            return View("Create", viewModel);
         }
         [Authorize]
         [HttpPost]
@@ -100,7 +100,7 @@ namespace Lab04.Controllers
             if (!ModelState.IsValid)
             {
                 viewModel.Categories = _dbContext.Categories.ToList();
-                return View("CoureForm", viewModel);
+                return View("Create", viewModel);
             }
             var userId = User.Identity.GetUserId();
             var course = _dbContext.Courses.Single(c => c.Id == viewModel.Id && c.LecturerId == userId);
